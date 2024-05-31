@@ -1,0 +1,38 @@
+﻿footer {
+    height: 60px;
+    border-top: 1px solid #cccdcf;
+    display: flex;
+    justify-content: center;
+}
+
+.foot-text {
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+    .foot-text span {
+        color: #4934eb;
+    }
+
+footer ul {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+    footer ul li {
+        margin: 0 10px;
+        align-self: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+        background-color: black;
+    }
+
+        footer ul li a i {
+            color: white;
+        }
