@@ -1,3 +1,8 @@
+using ChatNet.Filters;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 namespace ChatNet
 {
     public class Program
@@ -6,8 +11,10 @@ namespace ChatNet
         {
             var builder = WebApplication.CreateBuilder(args);
 
+
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession(options =>
             {
@@ -19,6 +26,28 @@ namespace ChatNet
                 options.Cookie.Path = "/";
                 options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
             });
+
+            // JWT configuration
+            var jwtSettings = builder.Configuration.GetSection("Jwt");
+            var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
+
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+             .AddJwtBearer(options =>
+             {
+                 options.TokenValidationParameters = new TokenValidationParameters
+                 {
+                     ValidateIssuer = true,
+                     ValidateAudience = true,
+                     ValidateLifetime = true,
+                     ValidateIssuerSigningKey = true,
+                     ValidIssuer = jwtSettings["Issuer"],
+                     ValidAudience = jwtSettings["Audience"],
+                     IssuerSigningKey = new SymmetricSecurityKey(key)
+                 };
+             });
+
+            ConfigurationManager configuration = builder.Configuration;
+
 
             var app = builder.Build();
 
@@ -35,6 +64,7 @@ namespace ChatNet
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseSession();
@@ -42,6 +72,7 @@ namespace ChatNet
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Account}/{action=Login}/{id?}");
+            app.MapControllers();
 
             app.Run();
         }

@@ -34,6 +34,34 @@ namespace ChatNet.Models
             return user;
         }
 
+        public List<User> GetUsers(string userid, string username)
+        {
+            List<User> users = new List<User>();
+
+            using (SqlConnection conn = new SqlConnection(dbcs))
+            {
+                SqlCommand cmd = new SqlCommand("spFetchUsers", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@userid", userid);
+                cmd.Parameters.AddWithValue("@username", username);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    User user = new User();
+                    user.UserId = reader["userid"].ToString();
+                    user.Name = reader["username"].ToString();
+                    user.Email = reader["useremail"].ToString();
+
+                    users.Add(user);
+                }
+            }
+
+            return users;
+        }
+
         public User CheckUserID(string userid)
         {
             User user = null;

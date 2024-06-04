@@ -1,8 +1,57 @@
-﻿@{
+﻿@using System.Security.Claims;
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@{
+    var user = User as ClaimsPrincipal;
+    var userID = user?.FindFirst(ClaimTypes.Name)?.Value;
+}
+
+<link href="~/css/index.css" rel="stylesheet" />
+
+<div class="home">
+    <div class="users-panel">
+        <div class="search-box">
+            <input class="form-input" placeholder="Search User" />
+        </div>
+        <div class="users">
+            @* @for(int i = 0; i < 10; i ++)
+            {
+                <div class="user">
+                    <div class="user-initial">
+                        <span>H</span>
+                    </div>
+                    <div class="user-name">
+                        <h5>Harsh Moriya</h5>
+                        <h6>@userID</h6>
+                    </div>
+                </div>
+            } *@
+        </div>
+    </div>
+    <div class="conversation-panel">
+
+    </div>
 </div>
+
+<script src="~/js/forusersection.js"></script>
+<script>
+    let userId = document.querySelector("#nav-userid").textContent;
+
+    let createAndOpenConversation = () => {
+
+    }
+
+    $(document).on('click', '#conversation-user', (e) => {
+        console.log(e.currentTarget)
+        e.preventDefault();
+    });
+
+    $(document).on('click', '#searched-user', (e) => {
+        createAndOpenConversation();
+        e.preventDefault();
+    });
+
+</script>

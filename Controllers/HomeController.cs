@@ -1,6 +1,8 @@
 using ChatNet.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using ChatNet.Filters;
 
 namespace ChatNet.Controllers
 {
@@ -13,15 +15,12 @@ namespace ChatNet.Controllers
             _logger = logger;
         }
 
+        [TypeFilter(typeof(JwtAuthorizeFilter))]
         public IActionResult Index()
         {
-            if(HttpContext.Session.GetString("UserID") != null)
-            {
-                return View();
-            } else
-            {
-                return RedirectToAction("Login", "Account");
-            }
+            TempData["IsLogin"] = null;
+
+            return View();
         }
 
         public IActionResult Privacy()

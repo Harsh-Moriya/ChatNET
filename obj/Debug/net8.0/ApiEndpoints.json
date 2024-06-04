@@ -1,1 +1,65 @@
-[]
+[
+  {
+    "ContainingType": "ChatNet.Controllers.ConversationsController",
+    "Method": "GetConversations",
+    "RelativePath": "api/Conversations/getconversations/{userid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userid",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatNet.Controllers.ConversationsController",
+    "Method": "PostConversation",
+    "RelativePath": "api/Conversations/postconversation/{uone}/{utwo}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uone",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "utwo",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatNet.Controllers.UsersController",
+    "Method": "GetUsers",
+    "RelativePath": "api/Users/getusers/{userid}/{username}/{currentpage}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userid",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "currentpage",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

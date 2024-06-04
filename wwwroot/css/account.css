@@ -79,3 +79,9 @@
 .validation {
     height: 12px;
 }
+
+#alert {
+    position: absolute;
+    top: 60px;
+    width: 100%;
+}

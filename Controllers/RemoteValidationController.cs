@@ -14,7 +14,7 @@ namespace ChatNet.Controllers
 
         public IActionResult IsUserIDValid(string userid)
         {
-            if (TempData["islogin"]  != null)
+            if (TempData.Peek("IsLogin")  != null)
             {
                 return Json(true);
             }
@@ -31,7 +31,7 @@ namespace ChatNet.Controllers
 
         public IActionResult IsUserEmailValid(string email)
         {
-            if (TempData["islogin"] != null)
+            if (TempData.Peek("IsLogin") != null)
             {
                 return Json(true);
             }

@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -13,24 +15,40 @@
     <header>
 
         <nav>
-            <ul class="sidebar">
+            @* <ul class="sidebar">
                 <li onclick=hideSidebar()><svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#000"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg></li>
                 <li><a href="#">Account</a></li>
                 <li><a href="#">Logout</a></li>
-            </ul>
+            </ul> *@
             <ul class="nav">
                 <li><a href="#">Chat<span>NET</span></a></li>
-                <li class="hideOnMobile"><a href="#">Account</a></li>
-                <li class="hideOnMobile"><a href="#">Logout</a></li>
-                <li onclick=showSidebar() class="menu-button"><svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px" fill="#000"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" /></svg></li>
+                @if(TempData.Peek("LoggedIn") != null)
+                {
+                    var user = User as ClaimsPrincipal;
+                    var userID = user?.FindFirst(ClaimTypes.Name)?.Value;
+                    <li class="hideOnMobile"><a id="nav-userid">@userID</a></li>
+                    <li class="hideOnMobile"><a asp-action="Logout" asp-controller="Account">Logout</a></li>
+                } else
+                {
+                    @if (TempData.Peek("IsLogin") != null)
+                    {
+                       <li class="hideOnMobile"><a asp-action="Signup" asp-controller="Account">Create Account</a></li>
+                    }
+                    else if (TempData.Peek("IsRegister") != null)
+                    {
+                        <li class="hideOnMobile"><a asp-action="Login" asp-controller="Account">Login</a></li>
+                    }
+                }
+                @* <li onclick=showSidebar() class="menu-button"><svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px" fill="#000"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" /></svg></li> *@
             </ul>
         </nav>
 
     </header>
 
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     @RenderBody()
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)

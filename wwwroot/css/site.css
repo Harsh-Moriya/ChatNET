@@ -45,14 +45,19 @@ nav ul  {
 }
 
 nav li {
-    height: 60px;
+    height: 10vh;
     font-size: 18px;
     font-weight: 500;
-    cursor: pointer;
+    display: flex;
+}
+
+nav li:last-child {
+    font-size: 20px;
 }
 
 nav a {
-    height: 100%;
+    height: 30px;
+    align-self: center;
     padding: 0 40px;
     text-decoration: none;
     display: flex;
@@ -70,7 +75,6 @@ nav a:not(:first-child) {
 
 nav a:hover {
     color: #4934eb;
-    background-color: rgb(250, 250, 250);
 }
 
 nav svg {
@@ -89,10 +93,21 @@ nav li:first-child a {
     color: black;
 }
 
+nav li:last-child a:hover {
+    color: red;
+}
+
 nav li span {
     color: #4934eb;
 }
 
+#nav-userid {
+    align-self: center;
+    height: 30px;
+    border: 1px solid #4934eb;
+    color: #4934eb;
+    border-radius: 50px;
+}
 
 
 .sidebar {
