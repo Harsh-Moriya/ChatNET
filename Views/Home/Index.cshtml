@@ -9,7 +9,8 @@
     var userID = user?.FindFirst(ClaimTypes.Name)?.Value;
 }
 
-<link href="~/css/index.css" rel="stylesheet" />
+<link href="~/css/userspanel.css" rel="stylesheet" />
+<link href="~/css/conversationpanel.css" rel="stylesheet" />
 
 <div class="home">
     <div class="users-panel">
@@ -17,41 +18,16 @@
             <input class="form-input" placeholder="Search User" />
         </div>
         <div class="users">
-            @* @for(int i = 0; i < 10; i ++)
-            {
-                <div class="user">
-                    <div class="user-initial">
-                        <span>H</span>
-                    </div>
-                    <div class="user-name">
-                        <h5>Harsh Moriya</h5>
-                        <h6>@userID</h6>
-                    </div>
-                </div>
-            } *@
+
         </div>
     </div>
     <div class="conversation-panel">
-
+        <div class="conversation-empty">
+            <h3>Double Click On Any Conversation To Open It.</h3>
+        </div>
     </div>
 </div>
 
 <script src="~/js/forusersection.js"></script>
-<script>
-    let userId = document.querySelector("#nav-userid").textContent;
-
-    let createAndOpenConversation = () => {
-
-    }
-
-    $(document).on('click', '#conversation-user', (e) => {
-        console.log(e.currentTarget)
-        e.preventDefault();
-    });
-
-    $(document).on('click', '#searched-user', (e) => {
-        createAndOpenConversation();
-        e.preventDefault();
-    });
-
-</script>
+<script src="~/js/forconversationsection.js"></script>
+<script src="~/js/formessages.js"></script>

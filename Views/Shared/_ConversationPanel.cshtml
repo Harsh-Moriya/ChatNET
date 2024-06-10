@@ -1,0 +1,66 @@
+﻿@model ChatNet.Models.Conversation
+@using System.Security.Claims;
+
+@{
+    var user = User as ClaimsPrincipal;
+    var userID = user?.FindFirst(ClaimTypes.Name)?.Value;
+
+    var self = "";
+    var selfName = "";
+    var conversationUser = "";
+    var conversationUserName = "";
+
+    if (userID == Model.UserOne)
+    {
+        self = Model.UserOne;
+        selfName = Model.UserOneName;
+        conversationUser = Model.UserTwo;
+        conversationUserName = Model.UserTwoName;
+    }
+    else
+    {
+        self = Model.UserTwo;
+        selfName = Model.UserTwoName;
+        conversationUser = Model.UserOne;
+        conversationUserName = Model.UserOneName;
+    }
+}
+
+<div class="conversation-info">
+    <div class="self-cont" data-user-id="@self">
+        <h5>@selfName</h5>
+        <h6>@self</h6>
+    </div>
+
+    <div class="conn-ico" data-conversation-id="@Model.ConversationID">
+        <i class="fa-solid fa-link"></i>
+    </div>
+
+    <div class="user-cont" data-user-id="@conversationUser">
+        <h5>@conversationUserName</h5>
+        <h6>@conversationUser</h6>
+    </div>
+</div>
+<div class="conversation">
+    @* <div class="sent-msg">
+        <p>
+            
+        </p>
+    </div>
+    <div class="received-msg">
+        <p>
+            
+        </p>
+    </div> *@
+</div>
+<div class="message-box">
+    <textarea class="msg-input" placeholder="Enter your message here."></textarea>
+    <button class="msg-btn">Send</button>
+</div>
+
+<script>
+    let onScroll = () => {
+        let conversation = document.querySelector(".conversation");
+        console.log(conversation.scrollTop);
+    }
+</script>

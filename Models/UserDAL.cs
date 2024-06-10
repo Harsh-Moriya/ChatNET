@@ -6,7 +6,7 @@ namespace ChatNet.Models
 {
     public class UserDAL
     {
-        string dbcs = ConnectionString.Dbcs;
+        string dbcs = ConfigurationHelper.GetConnectionString("DefaultConnection");
 
         public User GetUser(User u)
         {

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ChatNet")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b8c905ef148260dc46b01b2870784ecb8f021b2f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1966f70de9a22cb54cb468deb0d040835ec37edd")]
 [assembly: System.Reflection.AssemblyProductAttribute("ChatNet")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ChatNet")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

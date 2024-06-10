@@ -185,16 +185,20 @@
       "PackagePath": "staticwebassets\\css\\account.css"
     },
     {
+      "Id": "C:\\Users\\user\\Desktop\\Dev\\Projects\\ChatNet\\ChatNet\\wwwroot\\css\\conversationpanel.css",
+      "PackagePath": "staticwebassets\\css\\conversationpanel.css"
+    },
+    {
       "Id": "C:\\Users\\user\\Desktop\\Dev\\Projects\\ChatNet\\ChatNet\\wwwroot\\css\\footer.css",
       "PackagePath": "staticwebassets\\css\\footer.css"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\Dev\\Projects\\ChatNet\\ChatNet\\wwwroot\\css\\index.css",
-      "PackagePath": "staticwebassets\\css\\index.css"
-    },
-    {
       "Id": "C:\\Users\\user\\Desktop\\Dev\\Projects\\ChatNet\\ChatNet\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\user\\Desktop\\Dev\\Projects\\ChatNet\\ChatNet\\wwwroot\\css\\userspanel.css",
+      "PackagePath": "staticwebassets\\css\\userspanel.css"
     },
     {
       "Id": "C:\\Users\\user\\Desktop\\Dev\\Projects\\ChatNet\\ChatNet\\wwwroot\\favicon.ico",
@@ -233,8 +237,16 @@
       "PackagePath": "staticwebassets\\images\\two-way-chat-bubble-icon.png"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\Dev\\Projects\\ChatNet\\ChatNet\\wwwroot\\js\\forusersection.js",
-      "PackagePath": "staticwebassets\\js\\forusersection.js"
+      "Id": "C:\\Users\\user\\Desktop\\Dev\\Projects\\ChatNet\\ChatNet\\wwwroot\\js\\forConversationSection.js",
+      "PackagePath": "staticwebassets\\js\\forConversationSection.js"
+    },
+    {
+      "Id": "C:\\Users\\user\\Desktop\\Dev\\Projects\\ChatNet\\ChatNet\\wwwroot\\js\\forMessages.js",
+      "PackagePath": "staticwebassets\\js\\forMessages.js"
+    },
+    {
+      "Id": "C:\\Users\\user\\Desktop\\Dev\\Projects\\ChatNet\\ChatNet\\wwwroot\\js\\forUserSection.js",
+      "PackagePath": "staticwebassets\\js\\forUserSection.js"
     },
     {
       "Id": "C:\\Users\\user\\Desktop\\Dev\\Projects\\ChatNet\\ChatNet\\wwwroot\\js\\site.js",

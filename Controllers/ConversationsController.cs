@@ -27,17 +27,34 @@ namespace ChatNet.Controllers
             return Ok(conversations);
         }
 
-        [HttpGet("postconversation/{uone}/{utwo}")]
-        public IActionResult PostConversation(string uone, string utwo)
+        [HttpPost("postconversation")]
+        public IActionResult PostConversation(Users users)
         {
-            User userone = userDAL.CheckUserID(uone);
-            User usertwo = userDAL.CheckUserID(utwo);
-            string conversationid = Guid.NewGuid().ToString();
-            DateTime dateTime = DateTime.Now;
+            string uone = users.uone;
+            string utwo = users.utwo;
 
-            bool success = convDal.CreateConversation(conversationid, userone, usertwo, dateTime);
+            string conversationid = convDal.CheckConversation(uone, utwo);
 
-            return Ok(new {success});
+            if(string.IsNullOrEmpty(conversationid))
+            {
+                User userone = userDAL.CheckUserID(uone);
+                User usertwo = userDAL.CheckUserID(utwo);
+                conversationid = Guid.NewGuid().ToString();
+                DateTime dateTime = DateTime.Now;
+
+                bool success = convDal.CreateConversation(conversationid, userone, usertwo, dateTime);
+
+                return Ok(new { success, existed = false, conversationid });
+            } else
+            {
+                return Ok(new { success = true, existed = true, conversationid });
+            }
         }
+    }
+
+    public class Users
+    {
+        public string uone { get; set; }
+        public string utwo { get; set; }
     }
 }

@@ -31,6 +31,12 @@ html {
   min-height: 100%;
 }
 
+body {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
 nav {
     background-color: white;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
@@ -94,6 +100,10 @@ nav li:first-child a {
 }
 
 nav li:last-child a:hover {
+    color: #4934eb;
+}
+
+nav li:last-child .logout-btn:hover {
     color: red;
 }
 

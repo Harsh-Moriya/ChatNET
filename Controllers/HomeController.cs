@@ -9,10 +9,12 @@ namespace ChatNet.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private ConversationDAL convDAL = null;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            convDAL = new ConversationDAL();
         }
 
         [TypeFilter(typeof(JwtAuthorizeFilter))]
@@ -21,6 +23,15 @@ namespace ChatNet.Controllers
             TempData["IsLogin"] = null;
 
             return View();
+        }
+
+        [TypeFilter(typeof(JwtAuthorizeFilter))]
+        [HttpPost]
+        public IActionResult _ConversationPanel(string conversationid)
+        {
+            Conversation conv = convDAL.GetConversation(conversationid);
+
+            return PartialView("_ConversationPanel", conv);
         }
 
         public IActionResult Privacy()

@@ -18,19 +18,93 @@
   {
     "ContainingType": "ChatNet.Controllers.ConversationsController",
     "Method": "PostConversation",
-    "RelativePath": "api/Conversations/postconversation/{uone}/{utwo}",
+    "RelativePath": "api/Conversations/postconversation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "users",
+        "Type": "ChatNet.Controllers.Users",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatNet.Controllers.MessagesController",
+    "Method": "CheckMessages",
+    "RelativePath": "api/Messages/checkmessages/{conversationid}/{mtimestamp}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "uone",
+        "Name": "conversationid",
         "Type": "System.String",
         "IsRequired": true
       },
       {
-        "Name": "utwo",
+        "Name": "mtimestamp",
         "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatNet.Controllers.MessagesController",
+    "Method": "GetMessages",
+    "RelativePath": "api/Messages/getmessages/{conversationid}/{mtimestamp}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "conversationid",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "mtimestamp",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatNet.Controllers.MessagesController",
+    "Method": "GetNewMessages",
+    "RelativePath": "api/Messages/getnewmessages/{conversationid}/{mtimestamp}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "conversationid",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "mtimestamp",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatNet.Controllers.MessagesController",
+    "Method": "PostMessage",
+    "RelativePath": "api/Messages/postmessage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "message",
+        "Type": "ChatNet.Controllers.CapturedMessage",
         "IsRequired": true
       }
     ],

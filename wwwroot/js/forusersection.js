@@ -1,6 +1,6 @@
 ﻿//Global Page counter
 let currentPage = 0;
-let userId = document.querySelector("#nav-userid").textContent;
+let userId = document.querySelector("#nav-userid").dataset.userId;
 
 // Gets the user conversations from the conversation table
 let getConversations = () => {
@@ -30,7 +30,7 @@ let getConversations = () => {
                     userID = conversations[i].userOne;
                 }
 
-                let newHTML = `<div class="user" id="conversation-user">
+                let newHTML = `<div class="user" id="conversation-user" data-conversation-id=${conversations[i].conversationID}>
                                         <div class="user-initial">
                                             <span>${initial}</span>
                                         </div>

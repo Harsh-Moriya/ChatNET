@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ChatNet.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/14d9a59697.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -26,8 +26,8 @@
                 {
                     var user = User as ClaimsPrincipal;
                     var userID = user?.FindFirst(ClaimTypes.Name)?.Value;
-                    <li class="hideOnMobile"><a id="nav-userid">@userID</a></li>
-                    <li class="hideOnMobile"><a asp-action="Logout" asp-controller="Account">Logout</a></li>
+                    <li class="hideOnMobile"><a id="nav-userid" data-user-id="@userID">@userID</a></li>
+                    <li class="hideOnMobile"><a asp-action="Logout" asp-controller="Account" class="logout-btn">Logout</a></li>
                 } else
                 {
                     @if (TempData.Peek("IsLogin") != null)

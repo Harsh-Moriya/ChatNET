@@ -6,7 +6,7 @@ namespace ChatNet.Models
 {
     public class ConversationDAL
     {
-        string dbcs = ConnectionString.Dbcs;
+        string dbcs = ConfigurationHelper.GetConnectionString("DefaultConnection");
 
         public List<Conversation> GetConversations(string userid)
         {
@@ -37,6 +37,34 @@ namespace ChatNet.Models
             return conversations;
         }
 
+        public Conversation GetConversation(string conversationid)
+        {
+            Conversation conv = null;
+
+            using(SqlConnection conn = new SqlConnection(dbcs))
+            {
+                SqlCommand cmd = new SqlCommand("spFetchConversation", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@conversationid", conversationid);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                conv = new Conversation();
+
+                if(reader.Read())
+                {
+                    conv.ConversationID = reader["conversationid"].ToString();
+                    conv.UserOne = reader["userone"].ToString();
+                    conv.UserOneName = reader["useronename"].ToString();
+                    conv.UserTwo = reader["usertwo"].ToString();
+                    conv.UserTwoName = reader["usertwoname"].ToString();
+                }
+            }
+
+            return conv;
+        }
+
         public bool CreateConversation(string conversationid, User userone, User usertwo, DateTime lmtimestamp)
         {
             using (SqlConnection conn = new SqlConnection(dbcs))
@@ -61,6 +89,29 @@ namespace ChatNet.Models
                     return false;
                 }
             }
+        }
+
+        public string CheckConversation(string userone, string usertwo)
+        {
+            string conversationid = string.Empty;
+
+            using(SqlConnection conn = new SqlConnection(dbcs))
+            {
+                SqlCommand cmd = new SqlCommand("spCheckConversation", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@userone", userone);
+                cmd.Parameters.AddWithValue("@usertwo", usertwo);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    conversationid = reader["conversationid"].ToString();
+                }
+            }
+
+            return conversationid;
         }
     }
 }
