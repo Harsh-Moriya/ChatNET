@@ -3,19 +3,26 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ChatNET</title>
+    <title>@ViewBag.Title - ChatNET</title>
     <script type="importmap"></script>
 
+    <link rel="icon" type="image/png" href="~/favicon.png">
     <link rel="stylesheet" href="~/css/tailwind.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/ChatNET.styles.css" asp-append-version="true" />
 </head>
-<body>
+<body class="h-full">
     
-    <main role="main" class="p-4">
-        @RenderBody()
-    </main>
-       
+    <div class="flex flex h-screen">
+        @if (ViewBag.LoggedIn == true)
+        {
+            <header class="flex-shrink-0"></header>
+        }
+
+        <main role="main" class="bg-indigo-100 flex-grow overflow-y-auto min-h-0 flex justify-center items-center">
+            @RenderBody()
+        </main>
+    </div>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
