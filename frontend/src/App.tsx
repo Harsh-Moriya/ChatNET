@@ -11,7 +11,7 @@ export default function App() {
         path="/"
         element={
           <ProtectedRoute>
-            <p className="p-4 text-gray-500">Chat shell — coming soon</p>
+            <p className="p-4 text-gray-500">Chat shell, coming soon</p>
           </ProtectedRoute>
         }
       />
